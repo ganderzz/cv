@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Header } from "./components/header";
 import { Section } from "./components/section";
-import * as config from "./resume.example.json";
+import * as config from "./resume.json";
 import { ReactComponent as InformationIcon } from "./icons/information.svg";
 import { ReactComponent as PhoneIcon } from "./icons/phone.svg";
 import { ExperienceList } from "./components/experienceList";
@@ -9,7 +9,7 @@ import { ExperienceList } from "./components/experienceList";
 export function Document() {
   return (
     <main className="container">
-      <Header name={config.name} />
+      <Header name={config.basics.name} />
 
       <aside aria-hidden="true" className="skewed bg-gray-900" />
 
@@ -25,7 +25,7 @@ export function Document() {
               </>
             }
           >
-            {config.about}
+            {config.basics.summary}
           </Section>
 
           <Section
@@ -38,7 +38,11 @@ export function Document() {
               </>
             }
           >
-            {Object.entries(config.contact).map(([key, value]) => (
+            {Object.entries({
+              phone: config.basics.phone,
+              email: config.basics.email,
+              website: config.basics.url,
+            }).map(([key, value]) => (
               <div key={key} style={{ marginBottom: "0.6rem" }}>
                 <strong
                   style={{

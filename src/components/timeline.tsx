@@ -33,7 +33,7 @@ export const TimelineIcon = styled.div`
   width: 1rem;
   height: 1rem;
   left: -2.3rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   padding: 0.35rem;
   border-radius: 50%;
   font-size: 0.625rem;

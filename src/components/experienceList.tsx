@@ -33,43 +33,54 @@ export function ExperienceList({ data }: IProps) {
       </h3>
 
       <TimeLine>
-        {dataWithFields.map((item) => (
-          <TimelineItem key={item.id}>
-            <TimelineIcon bgColor="#5a67d8" color="#FFF">
-              {item.slug}
-            </TimelineIcon>
+        {dataWithFields.map((item, index, all) => {
+          const isNotSameCompany =
+            index == 0 || all[index - 1].company !== item.company;
 
-            <div>
-              <h2>{item.company}</h2>
-              <h3 style={{ fontWeight: 500 }}>{item.position}</h3>
-              <sub
-                style={{
-                  marginTop: "-0.25rem",
-                  display: "block",
-                  color: "#666",
-                }}
-              >
-                {item.startDate} {item.endDate ? ` - ${item.endDate}` : ""}
-              </sub>
-              <sub
-                style={{
-                  marginTop: "-0.1rem",
-                  display: "block",
-                  color: "#666",
-                }}
-              >
-                {item.location}
-              </sub>
+          return (
+            <TimelineItem key={item.id}>
+              {isNotSameCompany && (
+                <TimelineIcon bgColor="#5a67d8" color="#FFF">
+                  {item.slug}
+                </TimelineIcon>
+              )}
 
-              <Markdown
-                options={{ forceBlock: true }}
-                style={{ color: "#222", maxWidth: "800px" }}
-              >
-                {item.summary}
-              </Markdown>
-            </div>
-          </TimelineItem>
-        ))}
+              <div>
+                {isNotSameCompany && <h2>{item.company}</h2>}
+
+                <h3 style={{ fontWeight: 500 }}>{item.position}</h3>
+                <sub
+                  style={{
+                    marginTop: "-0.25rem",
+                    display: "block",
+                    color: "#666",
+                  }}
+                >
+                  {item.startDate}{" "}
+                  {item.endDate ? ` - ${item.endDate}` : " - current"}
+                </sub>
+                <sub
+                  style={{
+                    marginTop: "-0.1rem",
+                    display: "block",
+                    color: "#666",
+                  }}
+                >
+                  {item.location}
+                </sub>
+
+                {item.summary && (
+                  <Markdown
+                    options={{ forceBlock: true }}
+                    style={{ color: "#222", maxWidth: "800px" }}
+                  >
+                    {item.summary}
+                  </Markdown>
+                )}
+              </div>
+            </TimelineItem>
+          );
+        })}
       </TimeLine>
     </>
   );
