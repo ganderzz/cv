@@ -1,0 +1,27 @@
+{
+  "name": "Harold Javascript",
+  "about": "I'm a developer!",
+  "contact": {
+    "phone": "509.499.1503",
+    "email": "myemail@gmail.com",
+    "website": "https://website.dev"
+  },
+  "work": [
+    {
+      "company": "Billing Inc.",
+      "position": "Web Developer",
+      "startDate": "Dec 2013",
+      "endDate": "Dec 2015",
+      "location": "Narnia",
+      "summary": "ya know"
+    }
+  ],
+  "education": [
+    {
+      "name": "University",
+      "degree": "BS Computer Science",
+      "startDate": "2000",
+      "endDate": "2020"
+    }
+  ]
+}
